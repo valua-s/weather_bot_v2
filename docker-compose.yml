@@ -1,6 +1,7 @@
 version: '3.3'
 
-bot:
-    container_name: weather_bot_v2
-    image: valua-s/weather_bot_v2.0
-    env_file: .env
+services:
+    bot:
+        container_name: weather_bot_v2
+        image: valuas/weather_bot_v2.0
+        env_file: .env
