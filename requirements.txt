@@ -1,0 +1,7 @@
+asyncpg
+aiogram
+APScheduler
+python-decouple
+# psycopg
+# psycopg2-binary
+asyncpg-lite
