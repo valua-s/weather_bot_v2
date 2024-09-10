@@ -14,13 +14,21 @@ async def set_commands(bot):
     await bot.set_my_commands(commands, BotCommandScopeDefault())
 
 
+async def start_bot():
+    await set_commands()
+
+
 async def main():
     # scheduler.add_job(send_time_msg, 'interval', seconds=10)
     # scheduler.start()
     dp.include_router(start_router)
     await bot.delete_webhook(drop_pending_updates=True)
-    await dp.start_polling(bot)
-    await set_commands()
+    try:
+        await bot.delete_webhook(drop_pending_updates=True)
+        await dp.start_polling(bot,
+                               allowed_updates=dp.resolve_used_update_types())
+    finally:
+        await bot.session.close()
 
 if __name__ == "__main__":
     asyncio.run(main())
