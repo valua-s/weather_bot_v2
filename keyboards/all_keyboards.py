@@ -8,8 +8,8 @@ def main_kb(user_telegram_id: int):
     """Создание базовой клавиатуры."""
     kb_list = [
         [KeyboardButton(text="📖 О проекте"),
-         KeyboardButton(text="☀️ Составить прогноз")],
-        [KeyboardButton(text="🛑 Отменить подписку на прогноз"),]
+         KeyboardButton(text="Составить прогноз")],
+        [KeyboardButton(text="Отменить подписку на прогноз"),]
     ]
     if user_telegram_id in admins:
         kb_list.append([KeyboardButton(text="⚙️ Админ панель")])
