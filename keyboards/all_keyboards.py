@@ -25,8 +25,10 @@ def main_kb(user_telegram_id: int):
 def create_geo_kb():
     """Создание кнопки отправить геолокацию"""
     kb_list = [
-        [KeyboardButton(text="📍 Отправить геолокацию",
-                        request_location=True)]]
+        [KeyboardButton(
+            text="📍 Отправить геолокацию",
+            
+            request_location=True)]]
     keyboard = ReplyKeyboardMarkup(
         keyboard=kb_list,
         resize_keyboard=True,
