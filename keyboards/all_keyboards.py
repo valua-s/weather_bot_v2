@@ -22,7 +22,7 @@ def main_kb(user_telegram_id: int):
     return keyboard
 
 
-def create_geo_kb():
+def create_geo_kb(user_telegram_id: int):
     """Создание кнопки отправить геолокацию"""
     kb_list = [
         [KeyboardButton(
@@ -37,7 +37,7 @@ def create_geo_kb():
     return keyboard
 
 
-def create_unsub_kb():
+def create_unsub_kb(user_telegram_id: int):
     kb_list = [
         [KeyboardButton(text="🛑 Отмена подписки(пока не работает 🤷)")]
     ]
