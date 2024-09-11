@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
 from keyboards.all_keyboards import (main_kb)
 
@@ -17,6 +17,13 @@ async def cmd_start(message: Message):
 
 @start_router.message(F.text == 'На главную')
 async def cmd_come_back(message: Message):
+    await message.answer(
+        'C возвращением! Выберите параметры из меню',
+        reply_markup=main_kb(message.from_user.id))
+
+
+@start_router.message(Command('backhome'))
+async def cmd_backhome(message: Message):
     await message.answer(
         'C возвращением! Выберите параметры из меню',
         reply_markup=main_kb(message.from_user.id))

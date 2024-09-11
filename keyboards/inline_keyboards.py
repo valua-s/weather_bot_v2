@@ -12,5 +12,8 @@ def contacts_keyboard():
         [InlineKeyboardButton(
             text="Почта", url="mailto:va1.34@yandex.ru"
             )]
+        [InlineKeyboardButton(
+            text="На главную", callback_data='back_home'
+            )]
     ]
     return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)

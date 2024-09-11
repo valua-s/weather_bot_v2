@@ -7,7 +7,7 @@ contacts_router = Router()
 
 
 @contacts_router.message(F.text == '✉️ Связаться с автором')
-async def cmd_start(message: Message):
+async def cmd_contacts(message: Message):
     await message.answer(
         'Контакты:',
         reply_markup=contacts_keyboard())
