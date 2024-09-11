@@ -2,6 +2,7 @@ import asyncio
 
 from create_bot import bot, dp  # , scheduler
 from handlers.start import start_router
+from handlers.subscribe_on import subscribe_on_router
 # from work_time.time_func import send_time_msg
 from aiogram.types import BotCommand, BotCommandScopeDefault
 
@@ -21,6 +22,7 @@ async def start_bot():
 async def main():
     # регистрация роутеров
     dp.include_router(start_router)
+    dp.include_router(subscribe_on_router)
     dp.startup.register(start_bot)
     # запуск бота в режиме long polling при запуске бот очищает все обновления, которые были за его моменты бездействия
     try:

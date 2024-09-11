@@ -3,10 +3,10 @@ from aiogram.filters import CommandObject
 from aiogram.types import Message
 from keyboards.all_keyboards import (create_geo_kb, create_unsub_kb)
 
-start_router = Router()
+subscribe_on_router = Router()
 
 
-@start_router.message(F.text == 'Составить прогноз')
+@subscribe_on_router.message(F.text == 'Составить прогноз')
 async def cmd_forecast(message: Message):
     await message.answer(
         'Для начала передайте информацию о вашей Локации',
@@ -14,7 +14,7 @@ async def cmd_forecast(message: Message):
         )
 
 
-@start_router.message(F.text == 'Отменить подписку на прогноз')
+@subscribe_on_router.message(F.text == 'Отменить подписку на прогноз')
 async def cmd_cancel(message: Message):
     await message.answer(
         'Я пока не работаю, но буду отменять подписку',
