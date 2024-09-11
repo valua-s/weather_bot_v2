@@ -1,5 +1,6 @@
 from aiogram.types import (KeyboardButton,
-                           ReplyKeyboardMarkup)
+                           ReplyKeyboardMarkup,
+                           )
 from create_bot import admins
 # from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
@@ -27,7 +28,6 @@ def create_geo_kb():
     kb_list = [
         [KeyboardButton(
             text="📍 Отправить геолокацию",
-            
             request_location=True)]]
     keyboard = ReplyKeyboardMarkup(
         keyboard=kb_list,

@@ -1,5 +1,5 @@
 from aiogram import Router, F
-# from aiogram.filters import Command
+from aiogram.filters import CommandObject
 from aiogram.types import Message
 from keyboards.all_keyboards import (create_geo_kb, create_unsub_kb)
 
@@ -7,10 +7,12 @@ start_router = Router()
 
 
 @start_router.message(F.text == '/forcast')
-async def cmd_forecast(message: Message):
-    await message.answer(
-        'Для начала передайте информацию о вашей Локации',
-        reply_markup=create_geo_kb(message.from_user.id)
+async def cmd_forecast(message: Message, command: CommandObject):
+    args = command.args
+    if args == "/forcast":
+        await message.answer(
+            'Для начала передайте информацию о вашей Локации',
+            reply_markup=create_geo_kb(message.from_user.id)
         )
 
 
