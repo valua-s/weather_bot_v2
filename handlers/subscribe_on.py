@@ -10,7 +10,7 @@ start_router = Router()
 async def cmd_forecast(message: Message):
     await message.answer(
         'Для начала передайте информацию о вашей Локации',
-        reply_markup=create_geo_kb(message.from_user.id)
+        reply_markup=create_geo_kb()
         )
 
 
@@ -18,5 +18,5 @@ async def cmd_forecast(message: Message):
 async def cmd_cancel(message: Message):
     await message.answer(
         'Я пока не работаю, но буду отменять подписку',
-        reply_markup=create_unsub_kb(message.from_user.id)
+        reply_markup=create_unsub_kb()
         )
