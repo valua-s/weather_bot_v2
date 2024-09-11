@@ -4,16 +4,16 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 def contacts_keyboard():
     inline_kb_list = [
         [InlineKeyboardButton(
-            text="Хабр", url='https://habr.com/ru/users/valua-s/'
+            text='Хабр', url='https://habr.com/ru/users/valua-s/'
             )],
         [InlineKeyboardButton(
-            text="Телеграм", url='tg://resolve?domain=valua_s'
+            text='Телеграм', url='tg://resolve?domain=valua_s'
             )],
         [InlineKeyboardButton(
-            text="Почта", url="mailto:va1.34@yandex.ru"
+            text='Почта', url='mailto:va1.34@yandex.ru'
             )],
         [InlineKeyboardButton(
-            text="На главную", callback_data='back_home'
+            text='На главную', callback_data='back_home'
             )]
     ]
     return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
