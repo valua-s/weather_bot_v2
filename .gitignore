@@ -1,5 +1,4 @@
-frontend/node_modules
-infra/frontend/build
+artefacts_for_fast_seaching/
 .env
 
 # Byte-compiled / optimized / DLL files

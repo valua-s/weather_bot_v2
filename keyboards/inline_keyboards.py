@@ -1,15 +1,16 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-kb_list = [
-        [KeyboardButton(text=""),
-         KeyboardButton(text="")],
-        [KeyboardButton(text=""),]
-    ]
-def ease_link_kb():
+
+def contacts_keyboard():
     inline_kb_list = [
-        [InlineKeyboardButton(text="📖 О проекте", url='https://habr.com/ru/users/yakvenalex/')],
-        [InlineKeyboardButton(text="☀️ Составить прогноз", url='tg://resolve?domain=yakvenalexx')],
-        [InlineKeyboardButton(text="🛑 Отменить подписку на прогноз", web_app=WebAppInfo(url="https://tg-promo-bot.ru/questions"))]
+        [InlineKeyboardButton(
+            text="Хабр", url='https://habr.com/ru/users/valua-s/'
+            )],
+        [InlineKeyboardButton(
+            text="Телеграм", url='tg://resolve?domain=valua_s'
+            )],
+        [InlineKeyboardButton(
+            text="Почта", url="mailto:va1.34@yandex.ru"
+            )]
     ]
     return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
