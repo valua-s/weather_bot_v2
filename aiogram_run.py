@@ -15,7 +15,7 @@ async def set_commands(bot):
 
 
 async def start_bot():
-    await set_commands()
+    await set_commands(bot)
 
 
 async def main():
