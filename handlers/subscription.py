@@ -39,7 +39,7 @@ async def to_home(message: Message):
 
 async def cmd_ask_location(message: Message, state: FSMContext):
     await message.answer(
-        'Передайте информацию о вашей Локации',
+        'Друг мой! Передай информацию о Локации своей',
         reply_markup=create_geo_kb()
         )
 
@@ -72,7 +72,7 @@ async def create_adress_message(lat, lon, message: Message,
     await state.update_data(city=location_city)
     if "Ошибка" not in location_city:
         await message.answer(
-            f'Я определил ближайший к вам город. Это {location_city}?',
+            f'Ближайший к вам город я определил. Это {location_city}?',
             reply_markup=create_yes_no_city_kb()
         )
         if not data.get('schedule'):
@@ -87,8 +87,8 @@ async def create_adress_message(lat, lon, message: Message,
 
 @subscribe_on_router.message(F.text == '📍 Отправить локацию вручную')
 @subscribe_on_router.message(F.text == 'Да, я передам данные вручную')
-@subscribe_on_router.message(F.text == ("Нет, мой город другой, я передам "
-                             "локацию еще раз"))
+@subscribe_on_router.message(F.text == ("Нет, мой другой город,  еще раз "
+                             "я локацию передам"))
 async def cmd_ask_lat_city(message: Message, state: FSMContext):
     await state.set_state(Form.lat)
     await message.answer('Введите широту:')
@@ -122,7 +122,7 @@ async def cmd_ask_lon_city(message: Message, state: FSMContext):
 @subscribe_on_router.message(F.text == "Изменить график прогноза")
 async def choose_period(message: Message, state: FSMContext):
     await message.answer(
-            'Выберите из двух вариантов подписки',
+            'Друг мой, два варианта подписки возможно',
             reply_markup=create_period_kb()
         )
 
@@ -157,8 +157,8 @@ async def install_period_daily(message: Message, state: FSMContext):
 async def choose_time(message: Message, state: FSMContext):
     await state.set_state(Form.schedule)
     await message.answer(
-        'Введите время в которое хотите получать уведомления \n'
-        '(Местное время вашего города в формате ЧЧ:ММ)')
+        'Друг мой, время введи в которое желаешь уведомления получать \n'
+        '(Местное время города в формате ЧЧ:ММ)')
 
 
 @subscribe_on_router.message(F.text.contains(':'),
@@ -193,12 +193,12 @@ async def show_summary(message: Message, data):
     schedule = data.get('schedule')
     adress = data.get('city')
     if period == 'daily':
-        period = 'кратком прогнозе'
+        period = 'прогнозе кратком'
     else:
-        period = 'подробном прогнозе в виде таблицы'
+        period = 'прогнозе подробном в виде таблицы'
     text = (
-        f'Давайте перепроверим введенные данные:\n'
-        f'Вы будете получать уведомления каждый день в {schedule}\n'
+        f'Перепроверим введенные данные, мой друг:\n'
+        f'Уведомления будешь получать ты, каждый день в {schedule}\n'
         f'о {period} в городе {adress}\n'
         f'Все верно?\n'
     )
@@ -238,13 +238,13 @@ async def create_schedule(message: Message, state: FSMContext):
         if not result or message.text == "Да, я хочу добавить еще один":
             await create(Schedule_url, schedule_url_data)
             await message.answer(
-                'Успешное добавление расписания, ждите прогноза!',
+                'Успешное добавление расписания, завтра ожидай прогноза!',
                 reply_markup=main_kb(message.from_user.id)
             )
             await state.clear()
         else:
             await message.answer(
-                'Для Вас уже создан прогноз, хотите добавить еще один?',
+                'Создали мы уже один прогноз тебе, добавить еще один?',
                 reply_markup=create_one_more_kb()
             )
     except Exception as e:
@@ -263,7 +263,7 @@ async def create_change_schedule(message: Message, state: FSMContext):
 @subscribe_on_router.message(Command('cancel'))
 async def cmd_cancel(message: Message):
     await message.answer(
-        'Очень жаль отменять подписку, нужно подтверждение 🤷',
+        'Очень жаль отменять подписку, нужно подтверждение твое 🤷',
         reply_markup=create_unsub_kb()
         )
 
@@ -287,7 +287,7 @@ async def cmd_cancel_conf(message: Message, state: FSMContext):
             await message.answer(create_table_forcasts(data))
     except Exception as e:
         logger.error(e)
-        await message.answer('Вы еще не создавали проноз',
+        await message.answer('Прогноз еще не создан для тебя',
                              reply_markup=main_kb(message.from_user.id))
 
 
@@ -315,7 +315,7 @@ async def delete_this_action(message: Message, state: FSMContext):
                      data_delete[0])
     except Exception as e:
         logger.error(e)
-        await message.answer('Вы еще не создавали проноз',
+        await message.answer('Прогноз еще не создан для тебя',
                              reply_markup=main_kb(message.from_user.id))
     else:
         await message.answer('Прогноз успешно удален',

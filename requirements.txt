@@ -3,7 +3,7 @@ aiogram
 APScheduler
 python-decouple
 asyncpg-lite
-psycopg2==2.9.9
+psycopg2
 geopy
 requests
 pytz
