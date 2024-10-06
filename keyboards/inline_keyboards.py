@@ -1,4 +1,4 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 def contacts_keyboard():
@@ -8,9 +8,6 @@ def contacts_keyboard():
             )],
         [InlineKeyboardButton(
             text='Телеграм', url='tg://resolve?domain=valua_s'
-            )],
-        [InlineKeyboardButton(
-            text='Почта', url='mailto:va1.34@yandex.ru'
             )],
         [InlineKeyboardButton(
             text='На главную', callback_data='back_home'

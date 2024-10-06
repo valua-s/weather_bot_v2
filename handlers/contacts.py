@@ -1,7 +1,7 @@
-from aiogram import Router, F
+from aiogram import F, Router
 from aiogram.types import Message
-from keyboards.inline_keyboards import (contacts_keyboard)
 
+from keyboards.inline_keyboards import contacts_keyboard
 
 contacts_router = Router()
 

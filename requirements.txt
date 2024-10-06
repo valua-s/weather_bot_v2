@@ -5,3 +5,8 @@ python-decouple
 # psycopg
 # psycopg2-binary
 asyncpg-lite
+psycopg2==2.9.9
+geopy
+requests
+pytz
+timezonefinder

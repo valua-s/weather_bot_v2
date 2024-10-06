@@ -1,11 +1,13 @@
 import asyncio
 
-from create_bot import bot, dp  # , scheduler
-from handlers.start import start_router
-from handlers.subscribe_on import subscribe_on_router
-from handlers.contacts import contacts_router
 # from work_time.time_func import send_time_msg
 from aiogram.types import BotCommand, BotCommandScopeDefault
+
+from create_bot import bot, dp, scheduler
+from handlers.contacts import contacts_router
+from handlers.start import start_router
+from handlers.subscription import subscribe_on_router
+from worktime.time_func import create_list
 
 
 async def set_commands(bot):
@@ -27,8 +29,11 @@ async def main():
     dp.startup.register(start_bot)
     try:
         await bot.delete_webhook(drop_pending_updates=True)
+        scheduler.start()
+        await create_list()
         await dp.start_polling(
-            bot, allowed_updates=dp.resolve_used_update_types())
+                bot, allowed_updates=dp.resolve_used_update_types())
+
     finally:
         await bot.session.close()
 
