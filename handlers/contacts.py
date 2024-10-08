@@ -10,7 +10,7 @@ contacts_router = Router()
 
 @contacts_router.message(F.text == 'На главную')
 @contacts_router.message(Command('backhome'))
-async def to_home(message: Message):
+async def return_to_home(message: Message):
     await cmd_come_back(message)
 
 

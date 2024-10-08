@@ -23,9 +23,9 @@ async def start_bot():
 
 async def main():
     # регистрация роутеров
+    dp.include_router(contacts_router)
     dp.include_router(start_router)
     dp.include_router(subscribe_on_router)
-    dp.include_router(contacts_router)
     dp.startup.register(start_bot)
     try:
         await bot.delete_webhook(drop_pending_updates=True)
